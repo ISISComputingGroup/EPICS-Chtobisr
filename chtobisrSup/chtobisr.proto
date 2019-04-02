@@ -1,7 +1,11 @@
-getIDN {
+Terminator = CR LF;
+ReplyTimeout = 2000;
+
+getVER {
     out "*IDN?";
-    in "%\$1[^\r\n]";
-    ExtraInput = Ignore;
+    #Read no more than 39 chars (EPICS limit)
+    in "Coherent, Inc. - OBIS MINI-CONTROLLER - %#s";
+    in "OK";
 }
 
 cmd {

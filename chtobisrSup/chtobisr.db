@@ -1,3 +1,5 @@
+# Coherent OBIS laser remote
+
 record(bo, "$(P)SIM")
 {
     field(SCAN, "Passive")
@@ -16,4 +18,18 @@ record(bo, "$(P)DISABLE")
     field(OMSL, "supervisory")
     field(ZNAM, "COMMS ENABLED")
     field(ONAM, "COMMS DISABLED")
+}
+
+#### get Version ####
+
+record(stringin, "$(P)VER")
+{
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(INP,  "@chtobisr.proto getVER $(PORT)")
+#	field(SIOL, "$(P)SIM:ID")
+#   field(SIML, "$(P)SIM")
+    field(SDIS, "$(P)DISABLE")
+    info(INTEREST, "MEDIUM")
+    field(DESC, "OBIS laser remote version string")
 }
