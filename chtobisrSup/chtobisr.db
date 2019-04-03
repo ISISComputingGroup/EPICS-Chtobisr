@@ -20,16 +20,17 @@ record(bo, "$(P)DISABLE")
     field(ONAM, "COMMS DISABLED")
 }
 
-#### get Version ####
+#### get ID ####
 
-record(stringin, "$(P)VER")
+record(stringin, "$(P)ID")
 {
-    field(PINI, "YES")
+    field(SCAN, "10 second")
     field(DTYP, "stream")
-    field(INP,  "@chtobisr.proto getVER $(PORT)")
+    field(INP,  "@chtobisr.proto getID $(PORT)")
 #	field(SIOL, "$(P)SIM:ID")
 #   field(SIML, "$(P)SIM")
     field(SDIS, "$(P)DISABLE")
     info(INTEREST, "MEDIUM")
-    field(DESC, "OBIS laser remote version string")
+    info(ALARM, "CHTOBISR")
+    field(DESC, "OBIS Laser Remote ID string")
 }

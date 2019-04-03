@@ -1,11 +1,10 @@
 Terminator = CR LF;
 ReplyTimeout = 2000;
 
-getVER {
+getID {
     out "*IDN?";
-    #Read no more than 39 chars (EPICS limit)
-    in "Coherent, Inc. - OBIS MINI-CONTROLLER - %#s";
-    in "OK";
+    in "%#s";
+    ExtraInput = Ignore;
 }
 
 cmd {
