@@ -7,15 +7,11 @@ getID {
     ExtraInput = Ignore;
 }
 
-cmd {
-    out "\$1";
+setRESET {
+    out "*RST";
 }
 
-setD {
-    out "\$1 %d";
-}
-getD {
-    out "\$1?";
-    in "%d";
-    ExtraInput = Ignore;
+getINTERLOCK {
+    out "SYSTEM:LOCK?";
+    in "%#s";
 }

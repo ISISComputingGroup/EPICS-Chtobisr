@@ -1,4 +1,4 @@
-# Coherent OBIS laser remote
+# Coherent dOBIS laser remote
 
 record(bo, "$(P)SIM")
 {
@@ -33,4 +33,31 @@ record(stringin, "$(P)ID")
     info(INTEREST, "MEDIUM")
     info(ALARM, "CHTOBISR")
     field(DESC, "OBIS Laser Remote ID string")
+}
+
+#### set RESET ####
+
+record(ao, "$(P)RESET")
+{
+    field(DTYP, "stream")
+    field(OUT,  "@chtobisr.proto setRESET $(PORT)")
+#	field(SIOL, "$(P)SIM:ID")
+#   field(SIML, "$(P)SIM")
+    field(SDIS, "$(P)DISABLE")
+    info(INTEREST, "MEDIUM")
+    field(DESC, "OBIS Laser Remote RESET")
+}
+
+#### get interlock status ####
+
+record(stringin, "$(P)INTERLOCK:STAT")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@chtobisr.proto getINTERLOCK $(PORT)")
+#	field(SIOL, "$(P)SIM:ID")
+#   field(SIML, "$(P)SIM")
+    field(SDIS, "$(P)DISABLE")
+    info(INTEREST, "HIGH")
+    field(DESC, "OBIS Laser Remote Interlock Status")
 }
