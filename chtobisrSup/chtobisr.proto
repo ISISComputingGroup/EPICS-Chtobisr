@@ -15,3 +15,13 @@ getINTERLOCK {
     out "SYSTEM:LOCK?";
     in "%#s";
 }
+
+getSTATUS {
+    out "SYSTEM:STAT?";
+    in "%#s";
+}
+
+getFAULT {
+    out "SYSTEM:FAULT?";
+    in "%#s";
+}
