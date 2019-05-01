@@ -18,10 +18,12 @@ getINTERLOCK {
 
 getSTATUS {
     out "SYSTEM:STATUS?";
-    in "%#s";
+#    in "%#s";
+    in "%(\$1STAT:HIGH)4X%4X";
 }
 
 getFAULT {
     out "SYSTEM:FAULT?";
-    in "%#s";
+#    in "%#s";
+    in "%(\$1FAULT:HIGH)4X%4X";
 }

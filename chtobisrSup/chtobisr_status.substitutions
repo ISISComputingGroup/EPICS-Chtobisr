@@ -1,0 +1,23 @@
+file chtobisr_status.template {
+
+pattern {PORT, P, COMMENT, STATUSPVNAME, WORDHALF, BIT, DESCRIPTION}
+{"\$(PORT)", "\$(P)", "Laser fault", "LASER:FAULT", "LOW", "B0", "Laser fault - check code"}
+{"\$(PORT)", "\$(P)", "Laser emission", "LASER:EMISSION", "LOW", "B1", "Laser emission"}
+{"\$(PORT)", "\$(P)", "Laser ready", "LASER:READY", "LOW", "B2", "Laser ready"}
+{"\$(PORT)", "\$(P)", "Laser standby", "LASER:STANDBY", "LOW", "B3", "Laser standby"}
+{"\$(PORT)", "\$(P)", "CDRH delay", "LASER:CDRHDELAY", "LOW", "B4", "Laser CDRH delay"}
+{"\$(PORT)", "\$(P)", "Laser hardware fault", "LASER:HWFAULT", "LOW", "B5", "Laser H/W fault - check code"}
+{"\$(PORT)", "\$(P)", "Laser error", "LASER:ERROR", "LOW", "B6", "Laser error is queued"}
+{"\$(PORT)", "\$(P)", "Laser power calibration", "LASER:POWERCALIB", "LOW", "B7", "Laser power within spec"}
+{"\$(PORT)", "\$(P)", "Laser warm up", "LASER:WARMUP", "LOW", "B8", "Laser warm up"}
+{"\$(PORT)", "\$(P)", "Laser noise", "LASER:NOISE", "LOW", "B9", "Noise level is over 30"}
+{"\$(PORT)", "\$(P)", "External operating mode", "LASER:EXTERNALOPERATING", "LOW", "BA", "External operating mode"}
+{"\$(PORT)", "\$(P)", "Field calibration", "LASER:FIELDCALIB", "LOW", "BB", "Field calibration in progress"}
+{"\$(PORT)", "\$(P)", "Laser power voltage", "LASER:POWERVOLTAGE", "LOW", "BC", "12V laser power voltage present"}
+{"\$(PORT)", "\$(P)", "Controller standby", "CONTROLLER:STANDBY", "HIGH", "B0", "Always 0"}
+{"\$(PORT)", "\$(P)", "Controller interlock", "CONTROLLER:INTERLOCK", "HIGH", "B1", "Always 0"}
+{"\$(PORT)", "\$(P)", "Controller enumeration", "CONTROLLER:ENUMERATION", "HIGH", "B2", "Always 0"}
+{"\$(PORT)", "\$(P)", "Controller error", "CONTROLLER:ERROR", "HIGH", "B3", "Always 0"}
+{"\$(PORT)", "\$(P)", "Controller fault", "CONTROLLER:FAULT", "HIGH", "B4", "Always 0"}
+{"\$(PORT)", "\$(P)", "Remote active", "CONTROLLER:REMOTEACTIVE", "HIGH", "B5", "Always 0"}
+{"\$(PORT)", "\$(P)", "Controller indicator", "CONTROLLER:INDICATOR", "HIGH", "B6", "Always 0"}

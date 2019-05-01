@@ -24,6 +24,7 @@ record(bo, "$(P)DISABLE")
 
 record(stringin, "$(P)ID")
 {
+    field(DESC, "OBIS Laser Remote ID string")
     field(SCAN, "10 second")
     field(DTYP, "stream")
     field(INP,  "@chtobisr.proto getID $(PORT)")
@@ -32,26 +33,26 @@ record(stringin, "$(P)ID")
     field(SDIS, "$(P)DISABLE")
     info(INTEREST, "MEDIUM")
     info(ALARM, "CHTOBISR")
-    field(DESC, "OBIS Laser Remote ID string")
 }
 
 #### set RESET ####
 
 record(ao, "$(P)RESET")
 {
+    field(DESC, "OBIS Laser Remote RESET")
     field(DTYP, "stream")
     field(OUT,  "@chtobisr.proto setRESET $(PORT)")
 #	field(SIOL, "$(P)SIM:ID")
 #   field(SIML, "$(P)SIM")
     field(SDIS, "$(P)DISABLE")
     info(INTEREST, "MEDIUM")
-    field(DESC, "OBIS Laser Remote RESET")
 }
 
 #### get interlock status ####
 
 record(stringin, "$(P)INTERLOCK:STAT")
 {
+    field(DESC, "OBIS Laser Remote Interlock Status")
     field(SCAN, "1 second")
     field(DTYP, "stream")
     field(INP,  "@chtobisr.proto getINTERLOCK $(PORT)")
@@ -59,33 +60,106 @@ record(stringin, "$(P)INTERLOCK:STAT")
 #   field(SIML, "$(P)SIM")
     field(SDIS, "$(P)DISABLE")
     info(INTEREST, "HIGH")
-    field(DESC, "OBIS Laser Remote Interlock Status")
 }
 
-#### get status ####
 
-record(stringin, "$(P)STAT")
+#### get raw status code (Low Word) ####
+
+record(mbbiDirect, "$(P)STAT:LOW")
 {
-    field(SCAN, "1 second")
+    field(DESC, "OBIS Laser Remote Status - Low Word")
     field(DTYP, "stream")
-    field(INP,  "@chtobisr.proto getSTATUS $(PORT)")
-#	field(SIOL, "$(P)SIM:ID")
-#   field(SIML, "$(P)SIM")
-    field(SDIS, "$(P)DISABLE")
-    info(INTEREST, "HIGH")
-    field(DESC, "OBIS Laser Remote Status")
-}
+    field(SCAN, "1 second")
+    field(INP,  "@chtobisr.proto getSTATUS($(P)) $(PORT)")    
+    # Fields that will be set: (1 = True, 0 = False)
+    #
+    # B0 = "laser fault"
+    # B1 = "laser emission"
+    # B2 = "laser ready"
+    # B3 = "laser standby"
+    # B4 = "cdrh delay"
+    # B5 = "laser hardware fault"
+    # B6 = "laser error"
+    # B7 = "laser power calibration"
+    # B8 = "laser warm up"
+    # B9 = "laser noise"
+    # BA = "external operating mode"
+    # BB = "field calibration"
+    # BC = "laser power voltage"
+    # ...
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+} 
 
-#### get fault ####
+#### get raw status code (High Word) ####
 
-record(stringin, "$(P)FAULT")
+record(mbbiDirect, "$(P)STAT:HIGH")
 {
-    field(SCAN, "1 second")
-    field(DTYP, "stream")
-    field(INP,  "@chtobisr.proto getFAULT $(PORT)")
-#	field(SIOL, "$(P)SIM:ID")
-#   field(SIML, "$(P)SIM")
-    field(SDIS, "$(P)DISABLE")
+    field(DESC, "OBIS Laser Remote Status - High Word")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    # Fields that will be set: (1 = True, 0 = False)
+    #
+    # B0 = "controller standby"
+    # B1 = "controller interlock"
+    # B2 = "controller enumeration"
+    # B3 = "controller error"
+    # B4 = "controller fault"
+    # B5 = "remote active"
+    # B6 = "controller indicator"
+    # ...
     info(INTEREST, "HIGH")
-    field(DESC, "OBIS Laser Remote Faults")
+	info(archive, "VAL")
+} 
+
+
+#### get raw fault code (Low Word) ####
+
+record(mbbiDirect, "$(P)FAULT:LOW")
+{
+    field(DESC, "OBIS Laser Remote Faults - Low Word")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@chtobisr.proto getFAULT($(P)) $(PORT)")    
+    # Fields that will be set: (1 = True, 0 = False)
+    #
+    # B0 = "base plate temp fault"
+    # B1 = "diode temp fault"
+    # B2 = "internal temp fault"
+    # B3 = "laser power supply fault"
+    # B4 = "i2c error"
+    # B5 = "over current"
+    # B6 = "laser checksum error"
+    # B7 = "checksum recovery"
+    # B8 = "buffer overflow"
+    # B9 = "warm up limit fault"
+    # BA = "tec driver error"
+    # BB = "ccb error"
+    # BC = "diode temp limit error"
+    # BD = "laser ready fault"
+    # BE = "photodiode fault"
+    # BF = "fatal fault"
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+} 
+
+#### get raw fault code (High Word) ####
+
+record(mbbiDirect, "$(P)FAULT:HIGH")
+{
+    field(DESC, "OBIS Laser Remote Faults - High Word")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    # Fields that will be set: (1 = True, 0 = False)
+    #
+    # B0 = "startup fault"
+    # B1 = "watchdog timer reset"
+    # B2 = "field calibration"
+    # ...
+    # B4 = "over power"
+    # ...
+    # BE = "controller checksum"
+    # BF = "controller status"
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
 }
