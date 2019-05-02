@@ -21,5 +21,5 @@ pattern {PORT, P, COMMENT, FAULTPVNAME, WORDHALF, BIT, DESCRIPTION}
 {"\$(PORT)", "\$(P)", "Watchdog timer reset", "LASER:WATCHDOG", "HIGH", "B1", "Firmware resumed from reset"}
 {"\$(PORT)", "\$(P)", "Field calibration", "LASER:FIELDCALIB", "HIGH", "B2", "Errors during field calibration"}
 {"\$(PORT)", "\$(P)", "Over power", "LASER:OVERPOWER", "HIGH", "B4", "Output power above limit"}
-{"\$(PORT)", "\$(P)", "Controller checksum", "CONTROLLER:CHECKSUM", "HIGH", "BE", "Always 0"}
-{"\$(PORT)", "\$(P)", "Controller status", "CONTROLLER:STATUS", "HIGH", "BF", "Always 0"}
+{"\$(PORT)", "\$(P)", "Controller checksum", "CONTROLLER:CHECKSUM", "HIGH", "BE", "Controller checksum - always 0"}
+{"\$(PORT)", "\$(P)", "Controller status", "CONTROLLER:STATUS", "HIGH", "BF", "Controller status - always 0"}

@@ -14,10 +14,10 @@ pattern {PORT, P, COMMENT, STATUSPVNAME, WORDHALF, BIT, DESCRIPTION}
 {"\$(PORT)", "\$(P)", "External operating mode", "LASER:EXTERNALOPERATING", "LOW", "BA", "External operating mode"}
 {"\$(PORT)", "\$(P)", "Field calibration", "LASER:FIELDCALIB", "LOW", "BB", "Field calibration in progress"}
 {"\$(PORT)", "\$(P)", "Laser power voltage", "LASER:POWERVOLTAGE", "LOW", "BC", "12V laser power voltage present"}
-{"\$(PORT)", "\$(P)", "Controller standby", "CONTROLLER:STANDBY", "HIGH", "B0", "Always 0"}
-{"\$(PORT)", "\$(P)", "Controller interlock", "CONTROLLER:INTERLOCK", "HIGH", "B1", "Always 0"}
-{"\$(PORT)", "\$(P)", "Controller enumeration", "CONTROLLER:ENUMERATION", "HIGH", "B2", "Always 0"}
-{"\$(PORT)", "\$(P)", "Controller error", "CONTROLLER:ERROR", "HIGH", "B3", "Always 0"}
-{"\$(PORT)", "\$(P)", "Controller fault", "CONTROLLER:FAULT", "HIGH", "B4", "Always 0"}
-{"\$(PORT)", "\$(P)", "Remote active", "CONTROLLER:REMOTEACTIVE", "HIGH", "B5", "Always 0"}
-{"\$(PORT)", "\$(P)", "Controller indicator", "CONTROLLER:INDICATOR", "HIGH", "B6", "Always 0"}
+{"\$(PORT)", "\$(P)", "Controller standby", "CONTROLLER:STANDBY", "HIGH", "B0", "Controller standby - always 0"}
+{"\$(PORT)", "\$(P)", "Controller interlock", "CONTROLLER:INTERLOCK", "HIGH", "B1", "Controller interlock - always 0"}
+{"\$(PORT)", "\$(P)", "Controller enumeration", "CONTROLLER:ENUMERATION", "HIGH", "B2", "Controller enumeration - always 0"}
+{"\$(PORT)", "\$(P)", "Controller error", "CONTROLLER:ERROR", "HIGH", "B3", "Controller error - always 0"}
+{"\$(PORT)", "\$(P)", "Controller fault", "CONTROLLER:FAULT", "HIGH", "B4", "Controller fault - always 0"}
+{"\$(PORT)", "\$(P)", "Remote active", "CONTROLLER:REMOTEACTIVE", "HIGH", "B5", "Remote active - always 0"}
+{"\$(PORT)", "\$(P)", "Controller indicator", "CONTROLLER:INDICATOR", "HIGH", "B6", "Controller indicator - always 0"}
