@@ -1,25 +1,25 @@
 file chtobisr_faults.template {
 
 pattern {PORT, P, COMMENT, FAULTPVNAME, WORDHALF, BIT, DESCRIPTION}
-{"\$(PORT)", "\$(P)", "Base plate temperature fault", "LASER:BASEPLATETEMP", "LOW", "B0", "Base plate temperature out of range"}
-{"\$(PORT)", "\$(P)", "Diode temperature fault", "LASER:DIODETEMP", "LOW", "B1", "Diode temperature out of range"}
-{"\$(PORT)", "\$(P)", "Internal temperature fault", "LASER:INTERNALTEMP", "LOW", "B2", "Internal temperature out of range"}
-{"\$(PORT)", "\$(P)", "Laser power supply fault", "LASER:PSU", "LOW", "B3", "No electrical power to laser diode"}
-{"\$(PORT)", "\$(P)", "I2C error", "LASER:I2CBUS", "LOW", "B4", "I2C bus error"}
-{"\$(PORT)", "\$(P)", "Over current", "LASER:OVERCURRENT", "LOW", "B5", "Diode over current"}
-{"\$(PORT)", "\$(P)", "Laser checksum error", "LASER:CHECKSUM", "LOW", "B6", "EEPROM checksum error"}
-{"\$(PORT)", "\$(P)", "Checksum recovery", "LASER:CHECKSUMRECOVERY", "LOW", "B7", "EEPROM restored to default"}
-{"\$(PORT)", "\$(P)", "Buffer overflow", "LASER:BUFFEROVERFLOW", "LOW", "B8", "Bus message buffer overflow"}
-{"\$(PORT)", "\$(P)", "Warm up limit fault", "LASER:WARMUPLIMIT", "LOW", "B9", "Warm up time limit exceeded"}
-{"\$(PORT)", "\$(P)", "TEC driver error", "LASER:TECDRIVER", "LOW", "BA", "TE controller driver failure"}
-{"\$(PORT)", "\$(P)", "CCB error", "LASER:CCBERROR", "LOW", "BB", "RS-484 bus error"}
-{"\$(PORT)", "\$(P)", "Diode temp limit error", "LASER:DIODETEMPLIMIT", "LOW", "BC", "Diode temp off by >5degC"}
-{"\$(PORT)", "\$(P)", "Laser ready fault", "LASER:READY", "LOW", "BD", "Fail to emit at set power level"}
-{"\$(PORT)", "\$(P)", "Photodiode fault", "LASER:PHOTODIODE", "LOW", "BE", "Negative photodiode readout"}
-{"\$(PORT)", "\$(P)", "Fatal fault", "LASER:FATAL", "LOW", "BF", "Irrecoverable system failure"}
-{"\$(PORT)", "\$(P)", "Startup fault", "LASER:STARTUP", "HIGH", "B0", "Errors during firmware startup"}
-{"\$(PORT)", "\$(P)", "Watchdog timer reset", "LASER:WATCHDOG", "HIGH", "B1", "Firmware resumed from reset"}
-{"\$(PORT)", "\$(P)", "Field calibration", "LASER:FIELDCALIB", "HIGH", "B2", "Errors during field calibration"}
-{"\$(PORT)", "\$(P)", "Over power", "LASER:OVERPOWER", "HIGH", "B4", "Output power above limit"}
-{"\$(PORT)", "\$(P)", "Controller checksum", "CONTROLLER:CHECKSUM", "HIGH", "BE", "Controller checksum - always 0"}
-{"\$(PORT)", "\$(P)", "Controller status", "CONTROLLER:STATUS", "HIGH", "BF", "Controller status - always 0"}
+{"\$(PORT)", "\$(P)", "Base plate temperature fault", "LASER:BASEPLATETEMP",    "LOW",  "B0", "Base plate temperature out of range"}
+{"\$(PORT)", "\$(P)", "Diode temperature fault",      "LASER:DIODETEMP",        "LOW",  "B1", "Diode temperature out of range"}
+{"\$(PORT)", "\$(P)", "Internal temperature fault",   "LASER:INTERNALTEMP",     "LOW",  "B2", "Internal temperature out of range"}
+{"\$(PORT)", "\$(P)", "Laser power supply fault",     "LASER:PSU",              "LOW",  "B3", "No electrical power to laser diode"}
+{"\$(PORT)", "\$(P)", "I2C error",                    "LASER:I2CBUS",           "LOW",  "B4", "I2C bus error"}
+{"\$(PORT)", "\$(P)", "Over current",                 "LASER:OVERCURRENT",      "LOW",  "B5", "Diode over current"}
+{"\$(PORT)", "\$(P)", "Laser checksum error",         "LASER:CHECKSUM",         "LOW",  "B6", "EEPROM checksum error"}
+{"\$(PORT)", "\$(P)", "Checksum recovery",            "LASER:CHECKSUMRECOVERY", "LOW",  "B7", "EEPROM restored to default"}
+{"\$(PORT)", "\$(P)", "Buffer overflow",              "LASER:BUFFEROVERFLOW",   "LOW",  "B8", "Bus message buffer overflow"}
+{"\$(PORT)", "\$(P)", "Warm up limit fault",          "LASER:WARMUPLIMIT",      "LOW",  "B9", "Warm up time limit exceeded"}
+{"\$(PORT)", "\$(P)", "TEC driver error",             "LASER:TECDRIVER",        "LOW",  "BA", "TE controller driver failure"}
+{"\$(PORT)", "\$(P)", "CCB error",                    "LASER:CCBERROR",         "LOW",  "BB", "RS-484 bus error"}
+{"\$(PORT)", "\$(P)", "Diode temp limit error",       "LASER:DIODETEMPLIMIT",   "LOW",  "BC", "Diode temp off by >5degC"}
+{"\$(PORT)", "\$(P)", "Laser ready fault",            "LASER:READY",            "LOW",  "BD", "Fail to emit at set power level"}
+{"\$(PORT)", "\$(P)", "Photodiode fault",             "LASER:PHOTODIODE",       "LOW",  "BE", "Negative photodiode readout"}
+{"\$(PORT)", "\$(P)", "Fatal fault",                  "LASER:FATAL",            "LOW",  "BF", "Irrecoverable system failure"}
+{"\$(PORT)", "\$(P)", "Startup fault",                "LASER:STARTUP",          "HIGH", "B0", "Errors during firmware startup"}
+{"\$(PORT)", "\$(P)", "Watchdog timer reset",         "LASER:WATCHDOG",         "HIGH", "B1", "Firmware resumed from reset"}
+{"\$(PORT)", "\$(P)", "Field calibration",            "LASER:FIELDCALIB",       "HIGH", "B2", "Errors during field calibration"}
+{"\$(PORT)", "\$(P)", "Over power",                   "LASER:OVERPOWER",        "HIGH", "B4", "Output power above limit"}
+{"\$(PORT)", "\$(P)", "Controller checksum",          "CONTROLLER:CHECKSUM",    "HIGH", "BE", "Controller checksum - always 0"}
+{"\$(PORT)", "\$(P)", "Controller status",            "CONTROLLER:STATUS",      "HIGH", "BF", "Controller status - always 0"}
