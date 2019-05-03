@@ -12,7 +12,7 @@ pattern {PORT, P, COMMENT, FAULTPVNAME, WORDHALF, BIT, DESCRIPTION}
 {"\$(PORT)", "\$(P)", "Buffer overflow",              "LASER:BUFFEROVERFLOW",   "LOW",  "B8", "Bus message buffer overflow"}
 {"\$(PORT)", "\$(P)", "Warm up limit fault",          "LASER:WARMUPLIMIT",      "LOW",  "B9", "Warm up time limit exceeded"}
 {"\$(PORT)", "\$(P)", "TEC driver error",             "LASER:TECDRIVER",        "LOW",  "BA", "TE controller driver failure"}
-{"\$(PORT)", "\$(P)", "CCB error",                    "LASER:CCBERROR",         "LOW",  "BB", "RS-484 bus error"}
+{"\$(PORT)", "\$(P)", "CCB error",                    "LASER:CCBERROR",         "LOW",  "BB", "RS-485 bus error"}
 {"\$(PORT)", "\$(P)", "Diode temp limit error",       "LASER:DIODETEMPLIMIT",   "LOW",  "BC", "Diode temp off by >5degC"}
 {"\$(PORT)", "\$(P)", "Laser ready fault",            "LASER:READY",            "LOW",  "BD", "Fail to emit at set power level"}
 {"\$(PORT)", "\$(P)", "Photodiode fault",             "LASER:PHOTODIODE",       "LOW",  "BE", "Negative photodiode readout"}
