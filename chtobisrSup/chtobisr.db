@@ -100,6 +100,7 @@ record(mbbiDirect, "$(P)STAT:HIGH")
     field(SCAN, "Passive")
     # Fields that will be set: (1 = True, 0 = False)
     #
+    # ...
     # B9 = "controller standby"
     # BA = "controller interlock"
     # BB = "controller enumeration"
