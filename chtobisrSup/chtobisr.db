@@ -50,12 +50,14 @@ record(ao, "$(P)RESET")
 
 #### get interlock status ####
 
-record(stringin, "$(P)INTERLOCK:STAT")
+record(bi, "$(P)INTERLOCK")
 {
     field(DESC, "OBIS Laser Remote Interlock Status")
     field(SCAN, "1 second")
     field(DTYP, "stream")
     field(INP,  "@chtobisr.proto getINTERLOCK $(PORT)")
+    field(ZNAM, "OPEN")
+    field(ONAM, "CLOSED")
 #	field(SIOL, "$(P)SIM:ID")
 #   field(SIML, "$(P)SIM")
     field(SDIS, "$(P)DISABLE")

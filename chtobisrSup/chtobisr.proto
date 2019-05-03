@@ -13,7 +13,7 @@ setRESET {
 
 getINTERLOCK {
     out "SYSTEM:LOCK?";
-    in "%#s";
+    in "%{OFF|ON}";
 }
 
 getSTATUS {
