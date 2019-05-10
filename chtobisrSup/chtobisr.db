@@ -43,15 +43,19 @@ record(waveform, "$(P)ID")
 
 #### set RESET ####
 
-record(ao, "$(P)RESET")
+record(bo, "$(P)RESET:SP")
 {
-    field(DESC, "OBIS Laser Remote RESET")
+    field(DESC, "OBIS Laser Remote Reset")
     field(DTYP, "stream")
     field(OUT,  "@chtobisr.proto setRESET $(PORT)")
+    field(ZNAM, "YES")
+    field(ONAM, "TRUE")
 #	field(SIOL, "$(P)SIM:ID")
 #   field(SIML, "$(P)SIM")
     field(SDIS, "$(P)DISABLE")
 }
+
+alias("$(P)RESET:SP", "$(P)RESET")
 
 
 #### get interlock status ####
