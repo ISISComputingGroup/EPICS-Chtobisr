@@ -23,22 +23,6 @@ record(bo, "$(P)DISABLE")
 }
 
 
-# #### get ID ####
-# 
-# record(stringin, "$(P)ID")
-# {
-#     field(DESC, "OBIS Laser Remote ID string")
-#     field(SCAN, "10 second")
-#     field(DTYP, "stream")
-#     field(INP,  "@chtobisr.proto getID $(PORT)")
-# #	field(SIOL, "$(P)SIM:ID")
-# #   field(SIML, "$(P)SIM")
-#     field(SDIS, "$(P)DISABLE")
-#     info(INTEREST, "MEDIUM")
-#     info(ALARM, "CHTOBISR")
-# }
-
-
 #### get ID ####
 
 record(waveform, "$(P)ID")
@@ -53,7 +37,7 @@ record(waveform, "$(P)ID")
 #   field(SIML, "$(P)SIM")
     field(SDIS, "$(P)DISABLE")
     info(INTEREST, "MEDIUM")
-    info(ALARM, "CHTOBISR")
+    info(ALARM, "CHTOBISR_01")
 }
 
 
@@ -67,7 +51,6 @@ record(ao, "$(P)RESET")
 #	field(SIOL, "$(P)SIM:ID")
 #   field(SIML, "$(P)SIM")
     field(SDIS, "$(P)DISABLE")
-    info(INTEREST, "MEDIUM")
 }
 
 
@@ -85,6 +68,7 @@ record(bi, "$(P)INTERLOCK")
 #   field(SIML, "$(P)SIM")
     field(SDIS, "$(P)DISABLE")
     info(INTEREST, "HIGH")
+    info(archive, "VAL")
 }
 
 
