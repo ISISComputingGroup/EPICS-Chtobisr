@@ -178,3 +178,9 @@ record(mbbiDirect, "$(P)FAULT:HIGH")
     info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
+
+### SIMULATION RECORDS ###
+
+# Unnecessary in this case as the device has no setpoints.  Other important records are mbbiDirect, which are not supported in RECSIM.
+#
+# See https://github.com/ISISComputingGroup/ibex_developers_manual/wiki/Coherent-OBIS-Laser-Remote for further information.
