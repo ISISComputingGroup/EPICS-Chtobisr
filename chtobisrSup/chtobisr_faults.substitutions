@@ -23,3 +23,5 @@ pattern {PORT, P, COMMENT, FAULTPVNAME, WORDHALF, BIT, DESCRIPTION}
 {"\$(PORT)", "\$(P)", "Over power",                   "LASER:OVERPOWER",        "HIGH", "B4", "Output power above limit"}
 {"\$(PORT)", "\$(P)", "Controller checksum",          "CONTROLLER:CHECKSUM",    "HIGH", "BE", "Controller checksum - always 0"}
 {"\$(PORT)", "\$(P)", "Controller status",            "CONTROLLER:STATUS",      "HIGH", "BF", "Controller status - always 0"}
+
+}

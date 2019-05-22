@@ -21,3 +21,5 @@ pattern {PORT, P, COMMENT, STATUSPVNAME, WORDHALF, BIT, DESCRIPTION}
 {"\$(PORT)", "\$(P)", "Controller fault",        "CONTROLLER:FAULT",        "HIGH", "BD", "Controller fault - always 0"}
 {"\$(PORT)", "\$(P)", "Remote active",           "CONTROLLER:REMOTEACTIVE", "HIGH", "BE", "Remote active - always 0"}
 {"\$(PORT)", "\$(P)", "Controller indicator",    "CONTROLLER:INDICATOR",    "HIGH", "BF", "Controller indicator - always 0"}
+
+}
