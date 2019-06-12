@@ -1,0 +1,12 @@
+#### $(COMMENT) ####
+
+record(bi, "$(P)FAULT:$(FAULTPVNAME)")
+{
+    field(DESC, "$(DESCRIPTION)")
+    field(INP, "$(P)FAULT:$(WORDHALF).$(BIT) CP MS")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+    info(INTEREST, "HIGH")
+    info(archive, "VAL")
+}
+

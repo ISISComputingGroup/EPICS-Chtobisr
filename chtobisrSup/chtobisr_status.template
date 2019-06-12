@@ -1,0 +1,12 @@
+#### $(COMMENT) ####
+
+record(bi, "$(P)STAT:$(STATUSPVNAME)")
+{
+    field(DESC, "$(DESCRIPTION)")
+    field(INP, "$(P)STAT:$(WORDHALF).$(BIT) CP MS")
+    field(ZNAM, "False")
+    field(ONAM, "True")
+    info(INTEREST, "HIGH")
+    info(archive, "VAL")
+}
+

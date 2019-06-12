@@ -1,0 +1,180 @@
+####################################
+#### Coherent OBIS Laser Remote ####
+####################################
+
+record(bo, "$(P)SIM")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "Soft Channel")
+    field(ZNAM, "NO")
+    field(ONAM, "YES")
+    field(VAL, "$(RECSIM=0)")
+    field(PINI, "YES")
+}
+
+record(bo, "$(P)DISABLE")
+{
+    field(DESC, "Disable comms")
+    field(PINI, "YES")
+    field(VAL, "$(DISABLE=0)")
+    field(OMSL, "supervisory")
+    field(ZNAM, "COMMS ENABLED")
+    field(ONAM, "COMMS DISABLED")
+}
+
+
+#### get ID ####
+
+record(waveform, "$(P)ID")
+{
+    field(DESC, "OBIS Laser Remote ID string")
+    field(SCAN, "10 second")
+    field(DTYP, "stream")
+    field(INP,  "@chtobisr.proto getID $(PORT)")
+    field(FTVL, "CHAR")
+    field(NELM, 60)
+    field(SDIS, "$(P)DISABLE")
+    info(INTEREST, "MEDIUM")
+    info(ALARM, "CHTOBISR_01")
+}
+
+
+#### set RESET ####
+
+record(bo, "$(P)RESET:SP")
+{
+    field(DESC, "OBIS Laser Remote Reset")
+    field(DTYP, "stream")
+    field(OUT,  "@chtobisr.proto setRESET $(PORT)")
+    field(ZNAM, "YES")
+    field(ONAM, "TRUE")
+    field(SDIS, "$(P)DISABLE")
+}
+
+alias("$(P)RESET:SP", "$(P)RESET")
+
+
+#### get interlock status ####
+
+record(bi, "$(P)INTERLOCK")
+{
+    field(DESC, "OBIS Laser Remote Interlock Status")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@chtobisr.proto getINTERLOCK $(PORT)")
+    field(ZNAM, "OPEN")   # "OFF"
+    field(ONAM, "CLOSED") # "ON"
+    field(SDIS, "$(P)DISABLE")
+    info(INTEREST, "HIGH")
+    info(archive, "VAL")
+}
+
+
+#### get raw status code (Low Word) ####
+
+record(mbbiDirect, "$(P)STAT:LOW")
+{
+    field(DESC, "OBIS Laser Remote Status - Low Word")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@chtobisr.proto getSTATUS($(P)) $(PORT)")    
+    # Fields that will be set: (1 = True, 0 = False)
+    #
+    # B0 = "laser fault"
+    # B1 = "laser emission"
+    # B2 = "laser ready"
+    # B3 = "laser standby"
+    # B4 = "cdrh delay"
+    # B5 = "laser hardware fault"
+    # B6 = "laser error"
+    # B7 = "laser power calibration"
+    # B8 = "laser warm up"
+    # B9 = "laser noise"
+    # BA = "external operating mode"
+    # BB = "field calibration"
+    # BC = "laser power voltage"
+    # ...
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+} 
+
+
+#### get raw status code (High Word) ####
+
+record(mbbiDirect, "$(P)STAT:HIGH")
+{
+    field(DESC, "OBIS Laser Remote Status - High Word")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    # Fields that will be set: (1 = True, 0 = False)
+    #
+    # ...
+    # B9 = "controller standby"
+    # BA = "controller interlock"
+    # BB = "controller enumeration"
+    # BC = "controller error"
+    # BD = "controller fault"
+    # BE = "remote active"
+    # BF = "controller indicator"
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+} 
+
+
+#### get raw fault code (Low Word) ####
+
+record(mbbiDirect, "$(P)FAULT:LOW")
+{
+    field(DESC, "OBIS Laser Remote Faults - Low Word")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@chtobisr.proto getFAULT($(P)) $(PORT)")    
+    # Fields that will be set: (1 = True, 0 = False)
+    #
+    # B0 = "base plate temp fault"
+    # B1 = "diode temp fault"
+    # B2 = "internal temp fault"
+    # B3 = "laser power supply fault"
+    # B4 = "i2c error"
+    # B5 = "over current"
+    # B6 = "laser checksum error"
+    # B7 = "checksum recovery"
+    # B8 = "buffer overflow"
+    # B9 = "warm up limit fault"
+    # BA = "tec driver error"
+    # BB = "ccb error"
+    # BC = "diode temp limit error"
+    # BD = "laser ready fault"
+    # BE = "photodiode fault"
+    # BF = "fatal fault"
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+} 
+
+
+#### get raw fault code (High Word) ####
+
+record(mbbiDirect, "$(P)FAULT:HIGH")
+{
+    field(DESC, "OBIS Laser Remote Faults - High Word")
+    field(DTYP, "Soft Channel")
+    field(SCAN, "Passive")
+    # Fields that will be set: (1 = True, 0 = False)
+    #
+    # B0 = "startup fault"
+    # B1 = "watchdog timer reset"
+    # B2 = "field calibration"
+    # ...
+    # B4 = "over power"
+    # ...
+    # BE = "controller checksum"
+    # BF = "controller status"
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+### SIMULATION RECORDS ###
+
+# Unnecessary in this case as the device has no setpoints.  Other important records are mbbiDirect, which are not supported in RECSIM.
+#
+# See https://github.com/ISISComputingGroup/ibex_developers_manual/wiki/Coherent-OBIS-Laser-Remote for further information.

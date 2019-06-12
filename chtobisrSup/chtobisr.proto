@@ -1,0 +1,27 @@
+Terminator = CR LF;
+ReplyTimeout = 2000;
+
+getID {
+    out "*IDN?";
+    in "%#s";
+    ExtraInput = Ignore;
+}
+
+setRESET {
+    out "*RST";
+}
+
+getINTERLOCK {
+    out "SYSTEM:LOCK?";
+    in "%{OFF|ON}";
+}
+
+getSTATUS {
+    out "SYSTEM:STATUS?";
+    in "%(\$1STAT:HIGH)4X%4X";
+}
+
+getFAULT {
+    out "SYSTEM:FAULT?";
+    in "%(\$1FAULT:HIGH)4X%4X";
+}
