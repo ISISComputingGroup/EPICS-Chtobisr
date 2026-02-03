@@ -30,7 +30,7 @@ record(waveform, "$(P)ID")
     field(DESC, "OBIS Laser Remote ID string")
     field(SCAN, "10 second")
     field(DTYP, "stream")
-    field(INP,  "@chtobisr.proto getID $(PORT)")
+    field(INP,  "@chtobisr.proto getID($(ADDR)) $(PORT)")
     field(FTVL, "CHAR")
     field(NELM, 60)
     field(SDIS, "$(P)DISABLE")
@@ -45,7 +45,7 @@ record(bo, "$(P)RESET:SP")
 {
     field(DESC, "OBIS Laser Remote Reset")
     field(DTYP, "stream")
-    field(OUT,  "@chtobisr.proto setRESET $(PORT)")
+    field(OUT,  "@chtobisr.proto setRESET($(ADDR)) $(PORT)")
     field(ZNAM, "YES")
     field(ONAM, "TRUE")
     field(SDIS, "$(P)DISABLE")
@@ -61,7 +61,7 @@ record(bi, "$(P)INTERLOCK")
     field(DESC, "OBIS Laser Remote Interlock Status")
     field(SCAN, "1 second")
     field(DTYP, "stream")
-    field(INP,  "@chtobisr.proto getINTERLOCK $(PORT)")
+    field(INP,  "@chtobisr.proto getINTERLOCK($(ADDR)) $(PORT)")
     field(ZNAM, "OPEN")   # "OFF"
     field(ONAM, "CLOSED") # "ON"
     field(SDIS, "$(P)DISABLE")
@@ -77,7 +77,7 @@ record(mbbiDirect, "$(P)STAT:LOW")
     field(DESC, "OBIS Laser Remote Status - Low Word")
     field(DTYP, "stream")
     field(SCAN, "1 second")
-    field(INP,  "@chtobisr.proto getSTATUS($(P)) $(PORT)")    
+    field(INP,  "@chtobisr.proto getSTATUS($(ADDR),$(P)) $(PORT)")    
     # Fields that will be set: (1 = True, 0 = False)
     #
     # B0 = "laser fault"
@@ -128,7 +128,7 @@ record(mbbiDirect, "$(P)FAULT:LOW")
     field(DESC, "OBIS Laser Remote Faults - Low Word")
     field(DTYP, "stream")
     field(SCAN, "1 second")
-    field(INP,  "@chtobisr.proto getFAULT($(P)) $(PORT)")    
+    field(INP,  "@chtobisr.proto getFAULT($(ADDR),$(P)) $(PORT)")    
     # Fields that will be set: (1 = True, 0 = False)
     #
     # B0 = "base plate temp fault"
@@ -171,6 +171,36 @@ record(mbbiDirect, "$(P)FAULT:HIGH")
     # BF = "controller status"
     info(INTEREST, "HIGH")
 	info(archive, "VAL")
+}
+
+record(ai, "$(P)AMP") {
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@chtobisr.proto getAMP($(ADDR)) $(PORT)")
+    field(PREC, "3")
+    field(EGU, "mW")
+}
+
+record(ao, "$(P)AMP:SP") {
+    field(DTYP, "stream")
+    field(OUT, "@chtobisr.proto setAMP($(ADDR)) $(PORT)")
+    field(PREC, "3")
+    field(EGU, "mW")
+}
+
+record(bi, "$(P)STAT") {
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@chtobisr.proto getSTAT($(ADDR)) $(PORT)")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+
+record(bo, "$(P)STAT:SP") {
+    field(DTYP, "stream")
+    field(OUT, "@chtobisr.proto setSTAT($(ADDR)) $(PORT)")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
 }
 
 ### SIMULATION RECORDS ###
