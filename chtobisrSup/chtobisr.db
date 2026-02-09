@@ -59,7 +59,7 @@ alias("$(P)RESET:SP", "$(P)RESET")
 record(bi, "$(P)INTERLOCK")
 {
     field(DESC, "OBIS Laser Remote Interlock Status")
-    field(SCAN, "1 second")
+    field(SCAN, "10 second")
     field(DTYP, "stream")
     field(INP,  "@chtobisr.proto getINTERLOCK($(ADDR)) $(PORT)")
     field(ZNAM, "OPEN")   # "OFF"
@@ -76,7 +76,7 @@ record(mbbiDirect, "$(P)STAT:LOW")
 {
     field(DESC, "OBIS Laser Remote Status - Low Word")
     field(DTYP, "stream")
-    field(SCAN, "1 second")
+    field(SCAN, "10 second")
     field(INP,  "@chtobisr.proto getSTATUS($(ADDR),$(P)) $(PORT)")    
     # Fields that will be set: (1 = True, 0 = False)
     #
@@ -127,7 +127,7 @@ record(mbbiDirect, "$(P)FAULT:LOW")
 {
     field(DESC, "OBIS Laser Remote Faults - Low Word")
     field(DTYP, "stream")
-    field(SCAN, "1 second")
+    field(SCAN, "10 second")
     field(INP,  "@chtobisr.proto getFAULT($(ADDR),$(P)) $(PORT)")    
     # Fields that will be set: (1 = True, 0 = False)
     #
@@ -175,7 +175,7 @@ record(mbbiDirect, "$(P)FAULT:HIGH")
 
 record(ai, "$(P)AMP") {
     field(DTYP, "stream")
-    field(SCAN, "1 second")
+    field(SCAN, "2 second")
     field(INP,  "@chtobisr.proto getAMP($(ADDR)) $(PORT)")
     field(PREC, "3")
     field(EGU, "mW")
@@ -190,7 +190,7 @@ record(ao, "$(P)AMP:SP") {
 
 record(bi, "$(P)STAT") {
     field(DTYP, "stream")
-    field(SCAN, "1 second")
+    field(SCAN, "2 second")
     field(INP,  "@chtobisr.proto getSTAT($(ADDR)) $(PORT)")
     field(ZNAM, "OFF")
     field(ONAM, "ON")
