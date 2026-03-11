@@ -1,27 +1,55 @@
 Terminator = CR LF;
-ReplyTimeout = 2000;
+ReplyTimeout = 200;
+ReadTimeout = 200;
 
 getID {
-    out "*IDN?";
+    out "*IDN\$1?";
     in "%#s";
     ExtraInput = Ignore;
+	wait 50;
 }
 
 setRESET {
-    out "*RST";
+    out "*RST\$1";
+	wait 50;
 }
 
 getINTERLOCK {
-    out "SYSTEM:LOCK?";
+    out "SYSTEM\$1:LOCK?";
     in "%{OFF|ON}";
+	wait 50;
 }
 
 getSTATUS {
-    out "SYSTEM:STATUS?";
-    in "%(\$1STAT:HIGH)4X%4X";
+    out "SYSTEM\$1:STATUS?";
+    in "%(\$2STAT:HIGH)4X%4X";
+	wait 50;
 }
 
 getFAULT {
-    out "SYSTEM:FAULT?";
-    in "%(\$1FAULT:HIGH)4X%4X";
+    out "SYSTEM\$1:FAULT?";
+    in "%(\$2FAULT:HIGH)4X%4X";
+	wait 50;
+}
+
+getAMP {
+    out "SOURce\$1:POWer:LEVel:IMMediate:AMPLitude?";
+    in "%f";
+	wait 50;
+}
+
+setAMP {
+    out "SOURce\$1:POWer:LEVel:IMMediate:AMPLitude %.3f";
+	wait 50;
+}
+
+getSTAT {
+    out "SOURce\$1:AM:STATe?";
+    in "%{OFF|ON}";
+	wait 50;
+}
+
+setSTAT {
+    out "SOURce\$1:AM:STATe %{OFF|ON}";
+	wait 50;
 }
